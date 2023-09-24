@@ -6,7 +6,7 @@ using DependencyInjectionExample.Services.Interfaces;
 var builder = WebApplication.CreateBuilder(args);
 
 /*
- * Добавляем конфигурации определенные в файле appsettings.json(ссылка для запроса и строки подключения к MongoDB)
+ * Adding the configurations defined in the appsettings.json file (link for request and connection string to MongoDB)
  */
 builder.Services.Configure<MongoDBSettings>(builder.Configuration.GetSection("MongoDB"));
 builder.Services.Configure<PublicAPISettings>(builder.Configuration.GetSection("PublicAPI"));
@@ -18,7 +18,7 @@ builder.Services.AddSwaggerGen();
 
 
 /*
- * Добавляем используемые сервисы. При чем, сначала добавляется сервис логгера, т.к. сервисы вывода пользователей используют его.
+ * Adding the services used. At the same time, the logger service is added first, because user output services use it.
  */
 builder.Services.AddScoped<ILoggerService, LoggerMongoDBService>();
 builder.Services.AddTransient<IPublicAPIUsersService, UsersPublicAPIService>();

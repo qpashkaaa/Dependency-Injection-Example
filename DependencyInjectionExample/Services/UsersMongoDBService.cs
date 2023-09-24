@@ -7,8 +7,8 @@ using MongoDB.Driver;
 namespace DependencyInjectionExample.Services
 {
     /*
-     * Сервис вывода русских пользователей(из MongoDB). Здесь можно наблюдать реализацию интерфейса IUserService, а так же внедрение сервиса в сервис
-     * (Внедрение LoggerMongoDBService в UsersMongoDBService в конструкторе).
+     * Russian user withdrawal service (from MongoDB). Here you can observe the implementation of the IUserService interface, as well as the implementation of the service into the service
+     * (Embedding LoggerMongoDBService in UsersMongoDBService in the constructor).
      */
     public class UsersMongoDBService : IMongoDBUsersService
     {

@@ -6,8 +6,8 @@ using Microsoft.Extensions.Options;
 namespace DependencyInjectionExample.Services
 {
     /*
-     * Сервис вывода американских пользователей(получение данных со стороннего API). Здесь можно наблюдать реализацию интерфейса IUserService, а так же внедрение сервиса в сервис
-     * (Внедрение LoggerMongoDBService в UsersPublicAPIService в конструкторе).
+     * A service for the withdrawal of American users (receiving data from a third-party API). Here you can observe the implementation of the IUserService interface, as well as the implementation of the service into the service
+     * (Implementation of LoggerMongoDBService in UsersPublicAPIService in the constructor).
      */
     public class UsersPublicAPIService : IPublicAPIUsersService
     {

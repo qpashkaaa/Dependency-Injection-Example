@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace DependencyInjectionExample.Models
 {
     /*
-     * Общая модель данных, от которой потом будут наследоваться модели данных для конкретного сервиса(реализация наследования в ООП)
+     * A general data model from which data models for a specific service will then be inherited (implementation of inheritance in OOP)
      */
     public class UserAddress
     {

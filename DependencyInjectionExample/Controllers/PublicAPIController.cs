@@ -9,7 +9,7 @@ namespace DependencyInjectionExample.Controllers
     public class PublicAPIController : ControllerBase
     {
         /*
-         * Производим внедрение сервиса в контроллер, путем определения интерфейса данного сервиса в конструкторе.
+         * We implement the service into the controller by defining the interface of this service in the constructor.
          */
         private readonly IPublicAPIUsersService _userSerice;
         private List<PublicAPIUser> users;

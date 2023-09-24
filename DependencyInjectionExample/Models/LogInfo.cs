@@ -4,7 +4,7 @@ using MongoDB.Bson;
 namespace DependencyInjectionExample.Models
 {
     /*
-     * Модель данных, для сервиса логирования
+     * Data model, for logging service
      */
     public class LogInfo
     {

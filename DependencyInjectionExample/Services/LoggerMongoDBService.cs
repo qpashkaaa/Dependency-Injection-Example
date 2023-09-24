@@ -8,7 +8,7 @@ using MongoDB.Driver;
 namespace DependencyInjectionExample.Services
 {
     /*
-     * Сервис логирования(будет внедрятся в сервисы по выводу пользователей,чтобы сохранять информацию о сделанном запросе от какого-либо клиента).
+     * Logging service (will be implemented in user withdrawal services in order to save information about a request made from a client).
      */
     public class LoggerMongoDBService : ILoggerService
     {

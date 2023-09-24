@@ -1,8 +1,8 @@
 ﻿namespace DependencyInjectionExample.Services.Interfaces
 {
     /* 
-     * Верхний уровень абстракции сервисов по выводу пользователей. 
-     * В данном интерфейсе используются дженерики, чтобы не было проблем определением методов для конкретного сервиса.
+     * The upper level of abstraction of user withdrawal services.
+     * Generics are used in this interface so that there are no problems defining methods for a particular service.
      */
 
     public interface IUsersService<T>
