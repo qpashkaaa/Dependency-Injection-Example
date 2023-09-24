@@ -1,11 +1,12 @@
-﻿using DependencyInjectionExample.Models;
-
-namespace DependencyInjectionExample.Services.Interfaces
+﻿namespace DependencyInjectionExample.Services.Interfaces
 {
-    // The abstraction that all services depend on to work with the database.
+    /* 
+     * Верхний уровень абстракции сервисов по выводу пользователей. 
+     * В данном интерфейсе используются дженерики, чтобы не было проблем определением методов для конкретного сервиса.
+     */
 
-    public interface IUsersService
+    public interface IUsersService<T>
     {
-        public Task<IEnumerable<User>> GetUser();
+        public Task<IEnumerable<T>> GetUsers();
     }
 }

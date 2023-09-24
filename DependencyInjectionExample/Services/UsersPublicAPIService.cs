@@ -1,27 +1,33 @@
-﻿using DependencyInjectionExample.Models;
+﻿using DependencyInjectionExample.Models.PublicAPIModels;
 using DependencyInjectionExample.Services.Interfaces;
-using System.IO;
+using Microsoft.Extensions.Options;
+
 
 namespace DependencyInjectionExample.Services
 {
     /*
-     * A service that implements receiving users via a third-party API. 
-     * Adhering to the principle of Dependency Injection, it should be easily replaceable and loosely coupled. 
-     * It is replaced, in this example, by the UsersMongoDBService service, if necessary. 
-     * We can simply change the service used without changing the code in this service.
+     * Сервис вывода американских пользователей(получение данных со стороннего API). Здесь можно наблюдать реализацию интерфейса IUserService, а так же внедрение сервиса в сервис
+     * (Внедрение LoggerMongoDBService в UsersPublicAPIService в конструкторе).
      */
-    public class UsersPublicAPIService : IUsersService
+    public class UsersPublicAPIService : IPublicAPIUsersService
     {
-        static HttpClient client = new HttpClient();
-        private const string URL = "https://random-data-api.com/api/v2/users?size=10&response_type=json&fields=id";
-        public async Task<IEnumerable<User>> GetUser()
+        static HttpClient client;
+        private string URL;
+
+        public UsersPublicAPIService(IOptions<PublicAPISettings> publicAPISettings, ILoggerService logger)
         {
-            List<User> users = new List<User>();
+            client = new HttpClient();
+            URL = publicAPISettings.Value.ConnectionURI;
+            logger.Log(typeof(UsersPublicAPIService).Name);
+        }
+        public async Task<IEnumerable<PublicAPIUser>> GetUsers()
+        {
+            List<PublicAPIUser> users = new List<PublicAPIUser>();
 
             HttpResponseMessage response = await client.GetAsync(URL);
             if (response.IsSuccessStatusCode)
             {
-                users = await response.Content.ReadFromJsonAsync<List<User>>();
+                users = await response.Content.ReadFromJsonAsync<List<PublicAPIUser>>();
             }
 
             return users;

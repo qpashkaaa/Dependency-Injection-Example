@@ -1,19 +1,28 @@
+using DependencyInjectionExample.Models.MongoDBModels;
+using DependencyInjectionExample.Models.PublicAPIModels;
 using DependencyInjectionExample.Services;
 using DependencyInjectionExample.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
+
+/*
+ * Добавляем конфигурации определенные в файле appsettings.json(ссылка для запроса и строки подключения к MongoDB)
+ */
+builder.Services.Configure<MongoDBSettings>(builder.Configuration.GetSection("MongoDB"));
+builder.Services.Configure<PublicAPISettings>(builder.Configuration.GetSection("PublicAPI"));
 
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+
 /*
- * Registration of dependencies. If you build the logic and data models correctly, then when changing, for example, the resource where the data comes from, you can simply replace 
- * UsersPublicAPIService with UsersMongoDBService 
- * or UsersMongoDBService on UsersPublicAPIService
+ * Добавляем используемые сервисы. При чем, сначала добавляется сервис логгера, т.к. сервисы вывода пользователей используют его.
  */
-builder.Services.AddTransient<IUsersService, UsersPublicAPIService>();
+builder.Services.AddScoped<ILoggerService, LoggerMongoDBService>();
+builder.Services.AddTransient<IPublicAPIUsersService, UsersPublicAPIService>();
+builder.Services.AddTransient<IMongoDBUsersService, UsersMongoDBService>();
 
 var app = builder.Build();
 

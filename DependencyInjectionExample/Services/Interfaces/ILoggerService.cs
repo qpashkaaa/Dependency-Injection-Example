@@ -2,6 +2,6 @@
 {
     public interface ILoggerService
     {
-        public void Log(string ipAddress);
+        public void Log(string serviceName);
     }
 }
